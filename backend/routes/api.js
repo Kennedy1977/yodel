@@ -40,9 +40,6 @@ router.post("/", async (request, response) => {
     interestB = 4000 * interestBandB;
     interestC = (request.body.transaction - 5000) * interestBandC;
   }
-  console.log("A:", interestA);
-  console.log("B:", interestB);
-  console.log("C:", interestC);
 
   const transaction = new yodel({
     transaction: request.body.transaction,
