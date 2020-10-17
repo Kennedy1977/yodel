@@ -1,7 +1,10 @@
 const express = require("express");
 const router = express.Router();
 const yodel = require("../models/schema");
-// CRUD = Create Retrieve Update Delete
+// Define interest rates
+const interestBandA = 0.01; // 0 - 1000
+const interestBandB = 0.02; // 1000 - 5000
+const interestBandC = 0.03; // 5000 +
 
 // retrieve all
 router.get("/", async (request, response) => {
@@ -20,9 +23,32 @@ router.get("/:id", getTransaction, (request, response) => {
 
 // create
 router.post("/", async (request, response) => {
+  let interestA = 0;
+  let interestB = 0;
+  let interestC = 0;
+
+  if (request.body.transaction > 0) {
+    interestA = request.body.transaction * interestBandA;
+  }
+
+  if (request.body.transaction > 1000) {
+    interestA = 1000 * interestBandA;
+    interestB = (request.body.transaction - 1000) * interestBandB;
+  }
+
+  if (request.body.transaction > 5000) {
+    interestB = 4000 * interestBandB;
+    interestC = (request.body.transaction - 5000) * interestBandC;
+  }
+  console.log("A:", interestA);
+  console.log("B:", interestB);
+  console.log("C:", interestC);
+
   const transaction = new yodel({
     transaction: request.body.transaction,
+    interest: interestA + interestB + interestC,
   });
+
   try {
     const newTransaction = await transaction.save();
     response.status(201).json(newTransaction);

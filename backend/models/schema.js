@@ -1,11 +1,11 @@
 const mongoose = require("mongoose");
 
 const ApiSchema = new mongoose.Schema({
-  interestRates: {
-    type: Number,
-    required: false,
-  },
   transaction: {
+    type: Number,
+    required: true,
+  },
+  interest: {
     type: Number,
     required: true,
   },
