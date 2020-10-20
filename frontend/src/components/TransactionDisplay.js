@@ -1,12 +1,13 @@
 import React, { useContext } from "react";
 import { GlobalContext } from "../services/context/GlobalState";
 import { useApi } from "../services/api/index";
+import LoadData from "./LoadData";
 
 function TransactionDisplay() {
   const { transactions } = useContext(GlobalContext);
   const { removeTransaction } = useApi();
 
-  if (transactions === null) return null;
+  if (transactions === null) return <LoadData />;
 
   const output = transactions.transactions.map((transaction, index) => {
     return (

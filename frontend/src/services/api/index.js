@@ -6,14 +6,19 @@ export const useApi = () => {
   const { getTransactions } = useContext(GlobalContext);
   const endpoint = "http://localhost:3000/api/";
 
-  const getAllTransactions = () => {
+  const getAllTransactions = (msg) => {
     axios
       .get(endpoint)
       .then((response) => {
+        let status = document.querySelector(".status");
+        status.classList = "status good";
+        status.innerHTML = `Server status: ${response.status} ${response.statusText}`;
         getTransactions(response.data);
       })
       .catch((error) => {
-        throw error;
+        let status = document.querySelector(".status");
+        status.classList = "status bad";
+        status.innerHTML = `Server status: ${error.response.status} ${error.response.statusText} - ${error.response.data.message}`;
       });
   };
 
@@ -21,11 +26,15 @@ export const useApi = () => {
     axios
       .post(endpoint, data)
       .then((response) => {
-        console.log(response);
+        let status = document.querySelector(".status");
+        status.classList = "status good";
+        status.innerHTML = `Server status: ${response.status} ${response.statusText}`;
         getAllTransactions();
       })
       .catch((error) => {
-        throw error;
+        let status = document.querySelector(".status");
+        status.classList = "status bad";
+        status.innerHTML = `Server status: ${error.response.status} ${error.response.statusText} - ${error.response.data.message}`;
       });
   };
 
@@ -33,11 +42,12 @@ export const useApi = () => {
     axios
       .delete(`${endpoint}/${data}`)
       .then((response) => {
-        console.log(response);
         getAllTransactions();
       })
       .catch((error) => {
-        throw error;
+        let status = document.querySelector(".status");
+        status.classList = "status bad";
+        status.innerHTML = `Server status: ${error.response.status} ${error.response.statusText} - ${error.response.data.message}`;
       });
   };
 
