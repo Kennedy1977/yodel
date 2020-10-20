@@ -2,9 +2,9 @@ const express = require("express");
 const router = express.Router();
 const yodel = require("../models/schema");
 // Define interest rates
-const interestBandA = 0.01; // 0 - 1000
-const interestBandB = 0.02; // 1000 - 5000
-const interestBandC = 0.03; // 5000 +
+let interestBandA = 0.01; // 0 - 1000
+let interestBandB = 0.02; // 1000 - 5000
+let interestBandC = 0.03; // 5000 +
 
 // retrieve all
 router.get("/", async (request, response) => {
@@ -26,6 +26,15 @@ router.post("/", async (request, response) => {
   let interestA = 0;
   let interestB = 0;
   let interestC = 0;
+
+  if (request.body.interestBandA)
+    interestBandA = request.body.interestBandA / 100;
+
+  if (request.body.interestBandB)
+    interestBandB = request.body.interestBandB / 100;
+
+  if (request.body.interestBandC)
+    interestBandC = request.body.interestBandC / 100;
 
   if (request.body.transaction > 0) {
     interestA = request.body.transaction * interestBandA;

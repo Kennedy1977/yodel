@@ -1,0 +1,149 @@
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+:focus {
+  outline-color: #336699;
+}
+
+html,
+body,
+#root {
+  display: flex;
+  flex-direction: column;
+  font-family: sans-serif;
+
+  width: 100%;
+  height: 100%;
+  padding: 0;
+}
+
+header,
+footer {
+  display: flex;
+  align-items: center;
+  flex-shrink: 0;
+  height: 3.5em;
+  padding-left: 1.5em;
+  background: linear-gradient(
+    90deg,
+    rgba(0, 102, 153, 1) 0%,
+    rgba(102, 153, 204, 1) 100%
+  );
+}
+
+footer {
+  margin-top: 2em;
+}
+
+.footer-nav {
+  display: flex;
+  width: 100%;
+  height: 100%;
+  align-content: center;
+  justify-content: space-evenly;
+}
+
+.footer-link {
+  display: block;
+  font-size: 0.75em;
+  text-decoration: none;
+  color: #fff;
+  align-self: center;
+  padding: 0.75em 1.5em;
+  border-radius: 0.25em;
+  background-color: #003366;
+  border-bottom: 0.25em solid #003366;
+}
+.footer-link.active {
+  border-bottom: 0.25em solid #b5b5b5;
+}
+
+main {
+  flex: 1 0 auto;
+}
+
+h1 {
+  font-size: 1.5em;
+  line-height: 0;
+  font-weight: 300;
+  color: #fff;
+}
+
+fieldset {
+  border: 0;
+  margin-top: 1.5em;
+}
+
+.field-wrapper {
+  display: flex;
+  max-width: 32em;
+  padding: 0 1.5em;
+  margin: 1.5em auto 0;
+
+  flex-direction: column;
+  align-items: flex-start;
+}
+
+label {
+  font-weight: 700;
+  line-height: 2em;
+}
+
+input[type="text"] {
+  width: 100%;
+  padding: 1.5em;
+  border-radius: 0.25em;
+  border: 0.0625em solid #b5b5b5;
+}
+
+button {
+  display: inline-block;
+  font-size: 0.875em;
+  width: auto;
+  padding: 1.25em 1.75em;
+  border-radius: 0.25em;
+  border: 0;
+  background-color: #336699;
+  color: #fff;
+  margin-top: 1.5em;
+  text-transform: uppercase;
+  font-weight: 700;
+  letter-spacing: 0.1ch;
+  cursor: pointer;
+}
+
+button.secondary {
+  font-size: 0.675em;
+  padding: 0.75em 1.25em;
+  margin: 0;
+  color: #003366;
+  background-color: #fff;
+}
+
+table {
+  width: 100%;
+  max-width: 32em;
+  padding: 0 1.5em;
+  margin: 3em auto 0;
+  border-collapse: collapse;
+}
+
+th {
+  text-align: left;
+  background-color: #003366;
+  color: #fff;
+  padding: 1.125em 1em;
+}
+td {
+  background-color: #6699cc;
+  color: #fff;
+  padding: 0.75em 1em;
+  border-bottom: 0.125em solid #003366;
+}
+
+tr:nth-child(odd) td {
+  background-color: #336699;
+}
