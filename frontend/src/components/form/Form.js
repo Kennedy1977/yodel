@@ -1,6 +1,6 @@
 import React, { useState } from "react";
-import { InputText } from "./InputText";
-import { useApi } from "../services/api/index";
+import { InputText } from "../inputText/InputText";
+import { useApi } from "../../services/api/index";
 
 function Form() {
   const { postTransaction } = useApi();
@@ -28,31 +28,32 @@ function Form() {
   }
 
   return (
-    <form onSubmit={handleSubmit}>
+    <form id="transactionForm" onSubmit={handleSubmit}>
       <fieldset>
         <InputText
           name="interestA"
           label="Interest rate upto &pound;1000:"
           value={interestA}
-          fn={handleChange}
+          onChange={handleChange}
         />
         <InputText
           name="interestB"
           label="Interest rate between &pound;1000 &amp; &pound;5000:"
           value={interestB}
-          fn={handleChange}
+          onChange={handleChange}
         />
         <InputText
           name="interestC"
           label="Interest rate above &pound;5000:"
           value={interestC}
-          fn={handleChange}
+          onChange={handleChange}
         />
 
         <InputText
           name="transaction"
           label="Transaction amount:"
-          fn={handleChange}
+          value={transaction}
+          onChange={handleChange}
         />
 
         <div className="field-wrapper">

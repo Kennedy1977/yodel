@@ -1,10 +1,10 @@
 import React from "react";
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
-import { Header } from "./components/Header";
-import { Footer } from "./components/Footer";
+import { Header } from "./header/Header";
+import { Footer } from "./footer/Footer";
 
-import Form from "./components/Form";
-import TransactionDisplay from "./components/TransactionDisplay";
+import Form from "./form/Form";
+import TransactionDisplay from "./transactionDisplay/TransactionDisplay";
 
 function App() {
   return (

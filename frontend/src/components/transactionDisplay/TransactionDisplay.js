@@ -1,7 +1,7 @@
 import React, { useContext } from "react";
-import { GlobalContext } from "../services/context/GlobalState";
-import { useApi } from "../services/api/index";
-import LoadData from "./LoadData";
+import { GlobalContext } from "../../services/context/GlobalState";
+import { useApi } from "../../services/api/index";
+import LoadData from "../loadData/LoadData";
 
 function TransactionDisplay() {
   const { transactions } = useContext(GlobalContext);

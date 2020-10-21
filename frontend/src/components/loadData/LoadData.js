@@ -1,6 +1,6 @@
 import { useEffect, useContext } from "react";
-import { GlobalContext } from "../services/context/GlobalState";
-import { useApi } from "../services/api/index";
+import { GlobalContext } from "../../services/context/GlobalState";
+import { useApi } from "../../services/api/index";
 
 function LoadData() {
   const { env } = useContext(GlobalContext);
